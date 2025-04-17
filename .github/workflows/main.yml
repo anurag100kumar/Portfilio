@@ -3,11 +3,14 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main # Replace "main" with your default branch
+      - main # Replace with your default branch name if it's not 'main'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout Code
@@ -16,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '22.14.0' # Match your project’s Node.js version
+        node-version: '16' # Adjust this version based on your Node.js setup
 
     - name: Install Dependencies
       run: npm install
@@ -28,4 +31,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/portfolio
+        publish_dir: ./dist/portfolio # Matches the outputPath in your angular.json
