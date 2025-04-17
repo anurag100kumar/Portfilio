@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '22.14.0' # Adjust this version based on your Node.js setup
+        node-version: '22.14.0' # Use the latest LTS version of Node.js
 
     - name: Install Dependencies
       run: npm install
@@ -31,4 +31,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/portfolio # Matches the outputPath in your angular.json
+        publish_dir: ./dist/portfolio/browser # Matches the outputPath in your angular.json
